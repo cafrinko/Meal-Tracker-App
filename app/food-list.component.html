@@ -1,14 +1,6 @@
 <div class="col-md-6">
-  <select (change)="onChangeLow($event.target.value)" class="form-control filter">
-    <option value="all" selected>Show All</option>
-    <option value="low">Show Low</option>
-    <option value="notLow">Show Not Low</option>
-  </select>
-</div>
-<div class="col-md-6">
-  <select (change)="onChangeAlc($event.target.value)" class="form-control filter">
-    <option value="high">Show No Work Tomorrow!</option>
-    <option value="medium">Show Average Buzz</option>
+  <select (change)="onChangeCal($event.target.value)" class="form-control filter">
+    <option value="high">These foods are high in calories!</option>
     <option value="low">Show Just Sippin'</option>
     <option value="all" selected="selected">Show all</option>
   </select>
