@@ -1,5 +1,4 @@
 import { Component, EventEmitter } from 'angular2/core';
-import { FoodComponent } from './food.component';
 import { Food } from './food.model';
 import { EditFoodDetailsComponent } from './edit-food-details.component';
 import { NewFoodComponent } from './new-food.component';
@@ -10,8 +9,22 @@ import { CalPipe } from './cal.pipe';
   inputs: ['foodList'],
   outputs: ['onFoodSelect'],
   pipes: [CalPipe],
-  directives: [FoodComponent, EditFoodDetailsComponent, NewFoodComponent],
-  templateUrl: 'app/food-list.component.html'
+  directives: [EditFoodDetailsComponent, NewFoodComponent],
+  template: `
+  <select (change)="onChange($event.target.value)">
+    <option value="all">Show All</option>
+    <option value="high">Show High Calorie</option>
+    <option value="low" selected="selected">Show Low Calorie</option>
+  </select>
+  <food-display *ngFor="#currentFood of foodList | cal:filterCal"
+    (click)="foodClicked(currentFood)"
+    [class.selected]="currentFood === selectedFood"
+    [task]="currentFood">
+  </food-display>
+  <edit-food-details *ngIf="selectedFood" [food]="selectedFood">
+  </edit-food-details>
+  <new-food (onSubmitNewFood)="createFood($event)"></new-food>
+  `
 })
 
 export class FoodListComponent {

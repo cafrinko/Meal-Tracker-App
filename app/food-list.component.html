@@ -1,23 +1,23 @@
 <div class="col-md-6">
   <select (change)="onChangeCal($event.target.value)" class="form-control filter">
-    <option value="high">These foods are high in calories!</option>
-    <option value="low">Show Just Sippin'</option>
+    <option value="high">These foods are high in calories</option>
+    <option value="low">These foods are low in calories</option>
     <option value="all" selected="selected">Show all</option>
   </select>
 </div>
 
-<beer-display *ngFor="#currentBeer of beerList | low:filterLow | alc:filterAlc"
-  (click)="beerClicked(currentBeer)"
-  [class.high]="currentBeer.price >= 12"
-  [class.medium]="currentBeer.price >= 8 && currentBeer.price < 12"
-  [class.low]="currentBeer.price < 8"
-  [class.selected]="currentBeer === selectedBeer"
-  [beer]="currentBeer">
-</beer-display>
+<!-- <food-display *ngFor="#currentFood of foodList | cal:filterCal"
+  (click)="foodClicked(currentFood)"
+  [class.high]="currentFood.price >= 12"
+  [class.medium]="currentFood.price >= 8 && currentFood.price < 12"
+  [class.low]="currentFood.price < 8"
+  [class.selected]="currentFood === selectedFood"
+  [food]="currentFood">
+</food-display> -->
 <div>
-  <edit-beer-details *ngIf="selectedBeer" [beer]="selectedBeer">
-  </edit-beer-details>
+  <edit-food-details *ngIf="selectedFood" [food]="selectedFood">
+  </edit-food-details>
 </div>
 <div>
-  <new-beer (onSubmitNewBeer)="createBeer($event)"></new-beer>
+  <new-food (onSubmitNewFood)="createFood($event)"></new-food>
 </div>
