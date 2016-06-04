@@ -3,7 +3,7 @@ import { FoodListComponent } from './food-list.component';
 import { Food } from './food.model';
 
 @Component({
-  selector: 'meal-tracker',
+  selector: 'my-app',
   directives: [FoodListComponent],
   template: `
     <div class="container">
