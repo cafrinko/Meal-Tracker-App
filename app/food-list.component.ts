@@ -2,6 +2,7 @@ import { Component, EventEmitter } from 'angular2/core';
 import { Food } from './food.model';
 import { EditFoodDetailsComponent } from './edit-food-details.component';
 import { NewFoodComponent } from './new-food.component';
+import { FoodComponent } from './food.component';
 import { CalPipe } from './cal.pipe';
 
 @Component({
@@ -9,9 +10,9 @@ import { CalPipe } from './cal.pipe';
   inputs: ['foodList'],
   outputs: ['onFoodSelect'],
   pipes: [CalPipe],
-  directives: [EditFoodDetailsComponent, NewFoodComponent],
+  directives: [EditFoodDetailsComponent, NewFoodComponent, FoodComponent],
   template: `
-  <select (change)="onChange($event.target.value)">
+  <select (change)="displayList()">
     <option value="all">Show All</option>
     <option value="high">Show High Calorie</option>
     <option value="low" selected="selected">Show Low Calorie</option>
@@ -19,7 +20,7 @@ import { CalPipe } from './cal.pipe';
   <food-display *ngFor="#currentFood of foodList | cal:filterCal"
     (click)="foodClicked(currentFood)"
     [class.selected]="currentFood === selectedFood"
-    [task]="currentFood">
+    [food]="currentFood">
   </food-display>
   <edit-food-details *ngIf="selectedFood" [food]="selectedFood">
   </edit-food-details>
@@ -34,6 +35,9 @@ export class FoodListComponent {
   public filterCal: string = "all";
   constructor() {
     this.onFoodSelect = new EventEmitter();
+  }
+  displayList(){
+    console.log(this.foodList);
   }
   foodClicked(clickedFood: Food): void {
     this.selectedFood = clickedFood;

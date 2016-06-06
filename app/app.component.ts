@@ -16,11 +16,12 @@ import { Food } from './food.model';
 })
 
 export class AppComponent {
-  public food: Food[];
+  public foods: Food[];
      constructor(){
-       this.food = [
+       this.foods = [
         new Food("Ceviche", 0, "Octopus, cucumber, cilantro, lemon juice", 511),
       ];
+      console.log(this.foods);
      }
   foodWasSelected(clickedFood: Food): void {
   }
