@@ -12,10 +12,10 @@ import { CalPipe } from './cal.pipe';
   pipes: [CalPipe],
   directives: [EditFoodDetailsComponent, NewFoodComponent, FoodComponent],
   template: `
-  <select (change)="displayList()">
-    <option value="all">Show All</option>
+  <select (change)="onChangeCal($event.target.value)">
+    <option value="all" selected="selected">Show All</option>
     <option value="high">Show High Calorie</option>
-    <option value="low" selected="selected">Show Low Calorie</option>
+    <option value="low" >Show Low Calorie</option>
   </select>
   <food-display *ngFor="#currentFood of foodList | cal:filterCal"
     (click)="foodClicked(currentFood)"
@@ -35,9 +35,6 @@ export class FoodListComponent {
   public filterCal: string = "all";
   constructor() {
     this.onFoodSelect = new EventEmitter();
-  }
-  displayList(){
-    console.log(this.foodList);
   }
   foodClicked(clickedFood: Food): void {
     this.selectedFood = clickedFood;
