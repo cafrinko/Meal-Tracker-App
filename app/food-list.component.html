@@ -1,19 +1,11 @@
 <div class="col-md-6">
   <select (change)="onChangeCal($event.target.value)" class="form-control filter">
-    <option value="high">These foods are high in calories</option>
-    <option value="low">These foods are low in calories</option>
-    <option value="all" selected="selected">Show all</option>
+    <option value="high">High calorie foods (above 500 calories)</option>
+    <option value="low">Low calorie foods (below 500 calories)</option>
+    <option value="all" selected="selected">Show high and low calorie foods</option>
   </select>
 </div>
 
-<!-- <food-display *ngFor="#currentFood of foodList | cal:filterCal"
-  (click)="foodClicked(currentFood)"
-  [class.high]="currentFood.price >= 12"
-  [class.medium]="currentFood.price >= 8 && currentFood.price < 12"
-  [class.low]="currentFood.price < 8"
-  [class.selected]="currentFood === selectedFood"
-  [food]="currentFood">
-</food-display> -->
 <div>
   <edit-food-details *ngIf="selectedFood" [food]="selectedFood">
   </edit-food-details>

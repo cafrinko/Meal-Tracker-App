@@ -10,11 +10,11 @@ export class CalPipe implements PipeTransform {
     var desiredCalState = args[0];
     if(desiredCalState === "high") {
       return input.filter((food) => {
-        return food.calorieContent >= 500;
+        return food.calorieContent > 500;
       });
     } else if (desiredCalState === "low") {
       return input.filter((food) => {
-        return food.calorieContent < 500;
+        return food.calorieContent <= 500;
       });
     } else {
       return input;
