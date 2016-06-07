@@ -6,7 +6,7 @@
 
 ## Description
 
-_This application allows a user to log foods they've eaten, along with a description of the foods and # of calories in the foods. The user can also filter by high (above 500) and low (500 and below) calorie foods._
+_This application allows a user to log foods they've eaten, along with a description and # of calories in the foods. The user can also filter by high (above 500) and low (500 and below) calorie foods._
 
 ## Setup/Installation Requirements
 
